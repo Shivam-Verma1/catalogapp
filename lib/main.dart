@@ -6,40 +6,18 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Catlog converter',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(title: 'Welcome to Catalog Converter'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({key? key, required this.title}) : super(key: key);
-
-  final String title;
-  @override
-  State<MyHomePage> createState() => HomePage();
-}
-
-class HomePage extends State<MyHomePage> {
-  int counter = 0;
-  void increment() {
-    setState(() {
-      counter++;
-    });
-  }
-  @override
-  Widget build (BuildContext context)
-  {
-    return Scaffold(
-      appBar: AppBar(
-        title:Text(widget.title),
+      home: Material(
+        child: Center(
+          child: Container(
+            child: Text("Welcome to 30 days of flutter"),
+          ),
+        ),
       ),
-    )
+    );
   }
 }
