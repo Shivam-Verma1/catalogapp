@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
           children: [
 //1.image
             Image.asset(
-              'assets/images/india.jpg',
+              "assets/images/login.png",
               package: 'flutter_catalog',
               fit: BoxFit.cover,
             ),
