@@ -11,9 +11,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changebutton = false;
+  final _formkey = GlobalKey<FormState>();
 
   movetohome(BuildContext context) async {
-    if (_formkey.currentState.validate()) {
+    if (!(_formkey.currentState!.validate())) {
       setState(() {
         changebutton = true;
       });
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Form(
             child: Column(
-              children: [
+              children: <Widget>[
                 //1.image
                 Image.asset(
                   "assets/images/get1.png",
@@ -68,22 +69,22 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
 //username
                       TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: "Username",
-                          hintText: "Enter your username",
-                        ),
-                        onChanged: (value) {
-                          setState(() {
-                            name = value;
-                          });
-                        },
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return "Username cannot be empty";
-                          } else
+                          decoration: const InputDecoration(
+                            labelText: "Username",
+                            hintText: "Enter your username",
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              name = value;
+                            });
+                          },
+                          validator: (String? value) {
+                            value = '';
+                            if (value.isEmpty) {
+                              return "Username can't be empty";
+                            }
                             return null;
-                        },
-                      ),
+                          }),
 
                       //password
                       TextFormField(
@@ -92,12 +93,14 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: "Password",
                           hintText: "Enter Password",
                         ),
-                        validator: (value) {
+                        validator: (String? value) {
+                          value = '';
                           if (value.isEmpty) {
                             return "Password cannot be empty";
-                          } else if (value.length < 6) {
-                            return "Password must contain atleast 6 characters";
                           }
+                          // else if (value.length<6) {
+                          //   return "Password must contain atleast 6 characters";
+                          // }
                           return null;
                         },
                       )
