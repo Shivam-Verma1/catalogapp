@@ -12,9 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changebutton = false;
 
-
   final _formkey = GlobalKey<FormState>();
-
 
   moveToHome(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
@@ -38,9 +36,10 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Form(
+            key: _formkey,
             child: Column(
               children: <Widget>[
-  //1.image
+                //1.image
                 Image.asset(
                   "assets/images/get1.png",
                   fit: BoxFit.cover,
@@ -52,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 24,
                 ),
- //3.text widget
+                //3.text widget
                 Text(
                   "Welcome $name",
                   style: const TextStyle(
@@ -60,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
- //3.sizedbox
+                //3.sizedbox
                 const SizedBox(
                   height: 24,
                 ),
@@ -80,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                         // The validator receives the text that the user has entered.
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
+                            return 'Username cannot be empty';
                           }
                           return null;
                         },
@@ -90,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         },
                       ),
-  //password
+                      //password
                       TextFormField(
                         obscureText: true,
                         decoration: const InputDecoration(
@@ -100,10 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "Password cannot be empty";
+                          } else if (value.length < 6) {
+                            return "Password must contain atleast 6 characters";
                           }
-  // else if (value.length<6) {
-   //   return "Password must contain atleast 6 characters";
-  // }
                           return null;
                         },
                       )
