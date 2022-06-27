@@ -37,7 +37,7 @@ class MyDrawer extends StatelessWidget {
                   )),
             ),
 
-//2.All other items for that we use listtile
+//2.All other items for that we use list tile
 
             ListTile(
               leading: Icon(
@@ -86,3 +86,25 @@ class MyDrawer extends StatelessWidget {
     );
   }
 }
+
+/*   Important Concepts :
+                       1. Constraints go down
+                       2.sizes go up
+                       3.Parent sets position
+
+
+Container(
+          height:400,
+          width: 400,
+          color: Colors.orange,      
+          child: Container(
+            height:100,
+          width: 100,
+          color: Colors.green,
+   
+              ),//Now this code will draw a box of (height:400 and width:400 and color:green) not orange
+              //which shows that sizes move up while properties like color are decided by child.
+        ),
+
+*/
+

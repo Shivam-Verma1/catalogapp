@@ -10,15 +10,19 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // THEMES
+
+ // THEMES
       themeMode: ThemeMode.light,      //select thememode
       theme: MyTheme.lightTheme(context),      //gives properties of light thememode
       darkTheme: MyTheme.darkTheme(context),    
+
+
 //home
+
       debugShowCheckedModeBanner: false, //to remove debug banner
 
 //Routes
