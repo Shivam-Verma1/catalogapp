@@ -11,10 +11,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changebutton = false;
+
+
   final _formkey = GlobalKey<FormState>();
 
-  movetohome(BuildContext context) async {
-    if (!(_formkey.currentState!.validate())) {
+
+  moveToHome(BuildContext context) async {
+    if (_formkey.currentState!.validate()) {
       setState(() {
         changebutton = true;
       });
@@ -37,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Form(
             child: Column(
               children: <Widget>[
-                //1.image
+  //1.image
                 Image.asset(
                   "assets/images/get1.png",
                   fit: BoxFit.cover,
@@ -49,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 24,
                 ),
-                //3.text widget
+ //3.text widget
                 Text(
                   "Welcome $name",
                   style: const TextStyle(
@@ -57,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                //3.sizedbox
+ //3.sizedbox
                 const SizedBox(
                   height: 24,
                 ),
@@ -69,38 +72,38 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
 //username
                       TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Username",
-                            hintText: "Enter your username",
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              name = value;
-                            });
-                          },
-                          validator: (String? value) {
-                            value = '';
-                            if (value.isEmpty) {
-                              return "Username can't be empty";
-                            }
-                            return null;
-                          }),
+                        decoration: const InputDecoration(
+                          labelText: "Username",
+                          hintText: "Enter your username",
+                        ),
 
-                      //password
+                        // The validator receives the text that the user has entered.
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          setState(() {
+                            name = value;
+                          });
+                        },
+                      ),
+  //password
                       TextFormField(
                         obscureText: true,
                         decoration: const InputDecoration(
                           labelText: "Password",
                           hintText: "Enter Password",
                         ),
-                        validator: (String? value) {
-                          value = '';
-                          if (value.isEmpty) {
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
                             return "Password cannot be empty";
                           }
-                          // else if (value.length<6) {
-                          //   return "Password must contain atleast 6 characters";
-                          // }
+  // else if (value.length<6) {
+   //   return "Password must contain atleast 6 characters";
+  // }
                           return null;
                         },
                       )
@@ -112,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.indigo,
                   borderRadius: BorderRadius.circular(changebutton ? 50 : 8),
                   child: InkWell(
-                    onTap: () => movetohome(context),
+                    onTap: () => moveToHome(context),
                     child: AnimatedContainer(
                       duration: const Duration(seconds: 1),
                       alignment: Alignment.center,
@@ -156,3 +159,4 @@ class _LoginPageState extends State<LoginPage> {
 //                   Navigator.pushNamed(context, MyRoutes.homeRoute);
 //               },
 //                 ),
+//  Are you alright baby. i SHIVAM VERMA A BTECH STUDENT IS EVEN LIVING IN A MUCH LARGER AND HELP
